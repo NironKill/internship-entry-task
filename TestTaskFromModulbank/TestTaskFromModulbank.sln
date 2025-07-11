@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{752EE95E-159F-4432-A1E5-54B78E087DB5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7C75E089-513D-4424-A19F-926252936FEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.WebAPI", "Presentation\TicTacToe.WebAPI\TicTacToe.WebAPI.csproj", "{F4BFA8D2-FF73-4D06-A1CD-43EEEEB4986F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Application", "Core\TicTacToe.Application\TicTacToe.Application.csproj", "{0EFDC894-C473-4033-94F4-755338F48C9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Domain", "Core\TicTacToe.Domain\TicTacToe.Domain.csproj", "{FF14A8FD-572C-40AC-BAF5-C815940A0D5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Persistence", "Infrastructure\TicTacToe.Persistence\TicTacToe.Persistence.csproj", "{2BA47F02-B4CF-4846-8CF7-80D36BA62188}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4BFA8D2-FF73-4D06-A1CD-43EEEEB4986F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4BFA8D2-FF73-4D06-A1CD-43EEEEB4986F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4BFA8D2-FF73-4D06-A1CD-43EEEEB4986F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4BFA8D2-FF73-4D06-A1CD-43EEEEB4986F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EFDC894-C473-4033-94F4-755338F48C9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EFDC894-C473-4033-94F4-755338F48C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EFDC894-C473-4033-94F4-755338F48C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EFDC894-C473-4033-94F4-755338F48C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF14A8FD-572C-40AC-BAF5-C815940A0D5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF14A8FD-572C-40AC-BAF5-C815940A0D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF14A8FD-572C-40AC-BAF5-C815940A0D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF14A8FD-572C-40AC-BAF5-C815940A0D5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BA47F02-B4CF-4846-8CF7-80D36BA62188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BA47F02-B4CF-4846-8CF7-80D36BA62188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BA47F02-B4CF-4846-8CF7-80D36BA62188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BA47F02-B4CF-4846-8CF7-80D36BA62188}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F4BFA8D2-FF73-4D06-A1CD-43EEEEB4986F} = {752EE95E-159F-4432-A1E5-54B78E087DB5}
+		{0EFDC894-C473-4033-94F4-755338F48C9D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{FF14A8FD-572C-40AC-BAF5-C815940A0D5D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{2BA47F02-B4CF-4846-8CF7-80D36BA62188} = {7C75E089-513D-4424-A19F-926252936FEC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D7259B2-E21E-4F75-A1E9-E23055F4530D}
+	EndGlobalSection
+EndGlobal
