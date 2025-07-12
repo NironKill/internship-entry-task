@@ -22,7 +22,7 @@ namespace TicTacToe.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("TicTacToe.Domain.Game", b =>
+            modelBuilder.Entity("TicTacToe.Domain.Entity.Game", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -31,13 +31,19 @@ namespace TicTacToe.Persistence.Migrations
                     b.Property<DateTime?>("EndAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("Size")
+                    b.Property<int>("FieldSize")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PlayerCount")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("StartAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("VictoryCondition")
                         .HasColumnType("integer");
 
                     b.Property<Guid?>("WinnerId")
@@ -48,7 +54,7 @@ namespace TicTacToe.Persistence.Migrations
                     b.ToTable("Games");
                 });
 
-            modelBuilder.Entity("TicTacToe.Domain.GamePlayer", b =>
+            modelBuilder.Entity("TicTacToe.Domain.Entity.GamePlayer", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,6 +66,9 @@ namespace TicTacToe.Persistence.Migrations
                     b.Property<Guid>("PlayerId")
                         .HasColumnType("uuid");
 
+                    b.Property<int>("Role")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("GameId");
@@ -69,7 +78,7 @@ namespace TicTacToe.Persistence.Migrations
                     b.ToTable("GamePlayer");
                 });
 
-            modelBuilder.Entity("TicTacToe.Domain.Move", b =>
+            modelBuilder.Entity("TicTacToe.Domain.Entity.Move", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -96,7 +105,7 @@ namespace TicTacToe.Persistence.Migrations
                     b.ToTable("Moves");
                 });
 
-            modelBuilder.Entity("TicTacToe.Domain.Player", b =>
+            modelBuilder.Entity("TicTacToe.Domain.Entity.Player", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -114,15 +123,15 @@ namespace TicTacToe.Persistence.Migrations
                     b.ToTable("Players");
                 });
 
-            modelBuilder.Entity("TicTacToe.Domain.GamePlayer", b =>
+            modelBuilder.Entity("TicTacToe.Domain.Entity.GamePlayer", b =>
                 {
-                    b.HasOne("TicTacToe.Domain.Game", "Game")
+                    b.HasOne("TicTacToe.Domain.Entity.Game", "Game")
                         .WithMany("GamePlayers")
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TicTacToe.Domain.Player", "Player")
+                    b.HasOne("TicTacToe.Domain.Entity.Player", "Player")
                         .WithMany("GamePlayers")
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -133,15 +142,15 @@ namespace TicTacToe.Persistence.Migrations
                     b.Navigation("Player");
                 });
 
-            modelBuilder.Entity("TicTacToe.Domain.Move", b =>
+            modelBuilder.Entity("TicTacToe.Domain.Entity.Move", b =>
                 {
-                    b.HasOne("TicTacToe.Domain.Game", "Game")
+                    b.HasOne("TicTacToe.Domain.Entity.Game", "Game")
                         .WithMany("Moves")
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TicTacToe.Domain.Player", "Player")
+                    b.HasOne("TicTacToe.Domain.Entity.Player", "Player")
                         .WithMany("Moves")
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -152,14 +161,14 @@ namespace TicTacToe.Persistence.Migrations
                     b.Navigation("Player");
                 });
 
-            modelBuilder.Entity("TicTacToe.Domain.Game", b =>
+            modelBuilder.Entity("TicTacToe.Domain.Entity.Game", b =>
                 {
                     b.Navigation("GamePlayers");
 
                     b.Navigation("Moves");
                 });
 
-            modelBuilder.Entity("TicTacToe.Domain.Player", b =>
+            modelBuilder.Entity("TicTacToe.Domain.Entity.Player", b =>
                 {
                     b.Navigation("GamePlayers");
 

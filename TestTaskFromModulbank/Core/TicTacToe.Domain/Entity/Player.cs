@@ -1,11 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using TicTacToe.Domain.Base;
 
-namespace TicTacToe.Domain
+namespace TicTacToe.Domain.Entity
 {
-    public class Player
+    public class Player : BaseEntity
     {
-        [Key]
-        public Guid Id { get; set; }
         public string Name { get; set; }
 
         public ICollection<Game> Games { get; set; }

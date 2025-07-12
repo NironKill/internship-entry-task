@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TicTacToe.Application.Interfaces;
-using TicTacToe.Domain;
+using TicTacToe.Domain.Entity;
 
 namespace TicTacToe.Persistence.Common
 {

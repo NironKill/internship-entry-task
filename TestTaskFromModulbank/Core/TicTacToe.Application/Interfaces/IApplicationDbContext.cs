@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TicTacToe.Domain;
+using TicTacToe.Domain.Entity;
 
 namespace TicTacToe.Application.Interfaces
 {
@@ -10,5 +10,6 @@ namespace TicTacToe.Application.Interfaces
         DbSet<Move> Moves { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        DbSet<TEntity> Set<TEntity>() where TEntity : class;
     }
 }

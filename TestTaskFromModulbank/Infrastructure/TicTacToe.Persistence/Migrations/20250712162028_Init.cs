@@ -17,7 +17,9 @@ namespace TicTacToe.Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     WinnerId = table.Column<Guid>(type: "uuid", nullable: true),
-                    Size = table.Column<int>(type: "integer", nullable: false),
+                    FieldSize = table.Column<int>(type: "integer", nullable: false),
+                    PlayerCount = table.Column<int>(type: "integer", nullable: false),
+                    VictoryCondition = table.Column<int>(type: "integer", nullable: false),
                     StartAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     EndAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Status = table.Column<int>(type: "integer", nullable: false)
@@ -45,7 +47,8 @@ namespace TicTacToe.Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     GameId = table.Column<Guid>(type: "uuid", nullable: false),
-                    PlayerId = table.Column<Guid>(type: "uuid", nullable: false)
+                    PlayerId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Role = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
