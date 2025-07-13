@@ -50,6 +50,7 @@ namespace TicTacToe.Application.Repositories.Abstract
         public virtual async Task<TEntityGetDTO> Get(Expression<Func<TEntity, bool>> predicate, Func<TEntity, TEntityGetDTO> map, CancellationToken cancellationToken)
         {
             TEntity entity = await _dbSet.Where(predicate).FirstOrDefaultAsync(cancellationToken: cancellationToken);
+
             return map(entity);
         }
         public virtual async Task<ICollection<TEntityGetDTO>> GetAll(Func<TEntity, TEntityGetDTO> map, CancellationToken cancellationToken)

@@ -8,6 +8,7 @@ namespace TicTacToe.Application.Interfaces
         DbSet<Game> Games { get; set; }
         DbSet<Player> Players { get; set; }
         DbSet<Move> Moves { get; set; }
+        DbSet<GamePlayer> GamePlayers { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         DbSet<TEntity> Set<TEntity>() where TEntity : class;

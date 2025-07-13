@@ -21,6 +21,6 @@ namespace TicTacToe.Application.Requests.Players.Write.Create
         }
 
         private async Task<bool> PlayerExists(string name, CancellationToken cancellation) =>
-           await _context.Players.AnyAsync(x => x.Name != name, cancellation);
+           !await _context.Players.AnyAsync(x => x.Name == name, cancellation);
     }
 }

@@ -1,9 +1,11 @@
-﻿using TicTacToe.Application.DTOs.Move;
+﻿using TicTacToe.Application.DTOs.Game;
+using TicTacToe.Application.DTOs.Move;
 
 namespace TicTacToe.Application.Services.Interfaces
 {
     public interface IBoardService
     {
-        char[,] MoveMapVisualisation(List<BoardDTO> dto);
+        string[][] MoveMapVisualisation(List<MoveGetDTO>? dto, int fieldSize);
+        Task<GameGetDTO> GameСompletion(Guid moveId, CancellationToken cancellationToken);
     }
 }

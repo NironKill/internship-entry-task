@@ -2,8 +2,10 @@
 using TicTacToe.Application.DTOs.Game;
 using TicTacToe.Application.DTOs.GamePlayer;
 using TicTacToe.Application.DTOs.Move;
+using TicTacToe.Application.DTOs.Player;
 using TicTacToe.Application.Repositories.Interfaces;
 using TicTacToe.Application.Services.Interfaces;
+using TicTacToe.Domain.Entity;
 using TicTacToe.Domain.Enums;
 
 namespace TicTacToe.Application.Requests.Games.Read.GetById
@@ -11,11 +13,17 @@ namespace TicTacToe.Application.Requests.Games.Read.GetById
     public class GetByIdGameHandler : IRequestHandler<GetByIdGameRequest, GameGetDTO>
     {
         private readonly IGameRepository _game;
-        private readonly IBoardService _move;
+        private readonly IBoardService _board;
+        private readonly IPlayerRepository _player;
+        private readonly IGamePlayerRepository _gamePlayer;
+        private readonly IMoveRepository _move;
 
-        public GetByIdGameHandler(IGameRepository game, IBoardService move)
+        public GetByIdGameHandler(IGameRepository game, IBoardService board, IPlayerRepository player, IGamePlayerRepository gamePlayer, IMoveRepository move)
         {
             _game = game;
+            _board = board;
+            _player = player;
+            _gamePlayer = gamePlayer;
             _move = move;
         }
 
@@ -28,19 +36,31 @@ namespace TicTacToe.Application.Requests.Games.Read.GetById
                 VictoryCondition = entity.VictoryCondition,
                 FieldSize = entity.FieldSize,
                 Status = ((StatusGame)entity.Status).ToString(),
-                WinnerName = entity.Players?.Where(x => x.Id == entity.WinnerId).Select(x => x.Name).FirstOrDefault(),
-                Players = entity.GamePlayers.Select(gp => new GamePlayerGetDTO
+                WinnerName = entity.WinnerId is not null
+                ? _player.Get(x => x.Id == entity.WinnerId, player => new PlayerGetDTO
+                {
+                    Id = player.Id,
+                    Name = player.Name
+                }, cancellationToken).Result.Name
+                : null,
+                Players = _gamePlayer.GetAll(x => x.GameId == entity.Id, gp => new GamePlayerGetDTO
                 {
                     Role = ((PlayerRole)gp.Role).ToString(),
-                    PlayerName = gp.Player.Name
-                }).ToList(),
-                Moves = _move.MoveMapVisualisation(entity.Moves.Where(x => x.GameId == entity.Id).Select(m => new BoardDTO
+                    PlayerName = _player.Get(x => x.Id == gp.PlayerId, p => new PlayerGetDTO
+                    {
+                        Id = p.Id,
+                        Name = p.Name
+                    }, cancellationToken).Result.Name
+                }, cancellationToken).Result.ToList(),
+                Moves = _board.MoveMapVisualisation(_move.GetAll(x => x.GameId == entity.Id, move => new MoveGetDTO
                 {
-                    FieldSize = entity.FieldSize,
-                    PlayerRole = entity.GamePlayers.Where(x => x.PlayerId == m.PlayerId && x.GameId == m.GameId).Select(x => x.Role).FirstOrDefault(),
-                    Column = m.Column,
-                    Row = m.Row,
-                }).ToList())
+                    Column = move.Column,
+                    Row = move.Row,
+                    PlayerRole = _gamePlayer.Get(x => x.PlayerId == move.PlayerId && x.GameId == move.GameId, gp => new GamePlayerGetDTO
+                    {
+                        Role = ((PlayerRole)gp.Role).ToString()
+                    }, cancellationToken).Result.Role
+                }, cancellationToken).Result.ToList(), entity.FieldSize)
             }, cancellationToken);
     }
 }

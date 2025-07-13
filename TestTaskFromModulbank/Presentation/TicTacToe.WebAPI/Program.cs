@@ -2,6 +2,7 @@ using Serilog;
 using TicTacToe.Application;
 using TicTacToe.Persistence;
 using TicTacToe.Persistence.Common;
+using TicTacToe.WebAPI.Handlers;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,17 @@ builder.Services.AddControllers();
 
 builder.Services.AddOpenApi();
 
+builder.Services.AddSwaggerGen(options =>
+{
+    string basePath = AppContext.BaseDirectory;
+
+    string xmlPath = Path.Combine(basePath, "Documentation.xml");
+    options.IncludeXmlComments(xmlPath);
+});
+
+builder.Services.AddExceptionHandler<HandlerException>();
+builder.Services.AddProblemDetails();
+
 builder.Services
     .AddApplication()
     .AddPersistence(builder.Configuration);
@@ -24,11 +36,13 @@ WebApplication app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.UseExceptionHandler();
 
 app.MapControllers();
 

@@ -9,6 +9,7 @@ namespace TicTacToe.Persistence.Common
         public DbSet<Game> Games { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Move> Moves { get; set; }
+        public DbSet<GamePlayer> GamePlayers { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 

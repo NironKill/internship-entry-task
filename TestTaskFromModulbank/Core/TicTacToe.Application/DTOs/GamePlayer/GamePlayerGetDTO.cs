@@ -2,7 +2,7 @@
 {
     public class GamePlayerGetDTO
     {
-        public string PlayerName { get; set; } 
+        public string? PlayerName { get; set; } 
         public string Role { get; set; } 
     }
 }

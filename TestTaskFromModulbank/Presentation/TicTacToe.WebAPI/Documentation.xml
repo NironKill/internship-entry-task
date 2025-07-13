@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TicTacToe.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:TicTacToe.WebAPI.Controllers.GameController.Create(TicTacToe.Application.DTOs.Game.GameCreateDTO)">
+             <summary>
+             Creates the game
+             </summary>
+             <remarks>
+             Sample request:
+             POST /Game/Create
+             {
+            
+                 FieldSize: "playing field size (NxN: N >= 3)",
+                 VictoryCondition: "the required number of vertical, horizontal and diagonal matches to win the game",
+                 PlayerX: "player name X",
+                 PlayerO: "player name O"
+             }
+             </remarks>
+             <param name="dto">GameCreateDTO object</param>
+             <returns>Returns Guid</returns>
+             <response code="201">Success</response>
+             <response code="400">The server could not understand the request due to incorrect syntax</response>
+        </member>
+        <member name="M:TicTacToe.WebAPI.Controllers.GameController.Delete(System.Guid)">
+            <summary>
+            Delete the game
+            </summary>
+            <remarks>
+            Sample request:
+            DELETE /game/Delete/id
+            </remarks>
+            <param name="id">Game id (guid)</param>
+            <returns>Returns bool</returns>
+            <response code="200">Success</response>
+            <response code="400">The server could not understand the request due to incorrect syntax</response>
+            <response code="404">The server can not find the requested resource.</response>
+        </member>
+        <member name="M:TicTacToe.WebAPI.Controllers.GameController.GetAll">
+            <summary>
+            Gets a list of all games
+            </summary>
+            <remarks>
+            Sample request:
+            GET /game/GetAll
+            </remarks>
+            <returns>Returns GameGetDTO</returns>
+            <response code="200">Success</response>
+        </member>
+        <member name="M:TicTacToe.WebAPI.Controllers.GameController.GetById(System.Guid)">
+            <summary>
+            Gets the game by ID
+            </summary>
+            <remarks>
+            Sample request:
+            GET /game/GetById/id
+            </remarks>
+            <param name="id">Game id (guid)</param>
+            <returns>Returns GameGetDTO</returns>
+            <response code="200">Success</response>
+            <response code="400">The server could not understand the request due to incorrect syntax</response>
+            <response code="404">The server can not find the requested resource.</response>
+        </member>
+        <member name="M:TicTacToe.WebAPI.Controllers.MoveController.Create(TicTacToe.Application.DTOs.Move.MoveCreateDTO)">
+             <summary>
+             Creates the move
+             </summary>
+             <remarks>
+             Sample request:
+             POST /Move/Create
+             {
+            
+                 Column: "vertical coordinate",
+                 Row: "horizontal coordinate",
+                 PlayerName: "player name",
+                 GameId: "game id (Guid)"
+             }
+             </remarks>
+             <param name="dto">MoveCreateDTO object</param>
+             <returns>Returns GameGetDTO</returns>
+             <response code="201">Success</response>
+             <response code="400">The server could not understand the request due to incorrect syntax</response>
+        </member>
+        <member name="M:TicTacToe.WebAPI.Controllers.PlayerController.Create(TicTacToe.Application.DTOs.Player.PlayerCreateDTO)">
+             <summary>
+             Creates the player
+             </summary>
+             <remarks>
+             Sample request:
+             POST /Player/Create
+             {
+            
+                 Name: "player name",
+             }
+             </remarks>
+             <param name="dto">PlayerCreateDTO object</param>
+             <returns>Returns Guid</returns>
+             <response code="201">Success</response>
+             <response code="400">The server could not understand the request due to incorrect syntax</response>
+        </member>
+        <member name="M:TicTacToe.WebAPI.Controllers.PlayerController.Patch(System.Guid,TicTacToe.Application.DTOs.Player.PlayerUpdateDTO)">
+            <summary>
+            Change player name
+            </summary>
+            <remarks>
+            Sample request:
+            PATCH /Player/Patch/id
+            </remarks>
+            <param name="id">Player id (guid)</param>
+            <returns>Returns PlayerGetDTO</returns>
+            <response code="200">Success</response>
+            <response code="400">The server could not understand the request due to incorrect syntax</response>
+            <response code="404">The server can not find the requested resource.</response>
+        </member>
+        <member name="M:TicTacToe.WebAPI.Controllers.PlayerController.Delete(System.Guid)">
+            <summary>
+            Delete the player
+            </summary>
+            <remarks>
+            Sample request:
+            DELETE /Player/Delete/id
+            </remarks>
+            <param name="id">Player id (guid)</param>
+            <returns>Returns bool</returns>
+            <response code="200">Success</response>
+            <response code="400">The server could not understand the request due to incorrect syntax</response>
+            <response code="404">The server can not find the requested resource.</response>
+        </member>
+        <member name="M:TicTacToe.WebAPI.Controllers.PlayerController.GetAll">
+            <summary>
+            Gets a list of all players
+            </summary>
+            <remarks>
+            Sample request:
+            GET /Player/GetAll
+            </remarks>
+            <returns>Returns PlayerGetDTO</returns>
+            <response code="200">Success</response>
+        </member>
+        <member name="M:TicTacToe.WebAPI.Controllers.PlayerController.GetById(System.Guid)">
+            <summary>
+            Gets the player by ID
+            </summary>
+            <remarks>
+            Sample request:
+            GET /Player/GetById/id
+            </remarks>
+            <param name="id">Player id (guid)</param>
+            <returns>Returns PlayerGetDTO</returns>
+            <response code="200">Success</response>
+            <response code="400">The server could not understand the request due to incorrect syntax</response>
+            <response code="404">The server can not find the requested resource.</response>
+        </member>
+    </members>
+</doc>

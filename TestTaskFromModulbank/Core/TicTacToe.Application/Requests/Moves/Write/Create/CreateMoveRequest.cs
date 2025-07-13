@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using TicTacToe.Application.DTOs.Game;
 
-namespace TicTacToe.Application.Requests.Move.Write.Create
+namespace TicTacToe.Application.Requests.Moves.Write.Create
 {
-    public class CreateMoveRequest : IRequest<Guid>
+    public class CreateMoveRequest : IRequest<GameGetDTO>
     {
         public Guid GameId { get; set; }
         public string PlayerName { get; set; }
