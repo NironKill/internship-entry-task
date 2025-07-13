@@ -12,6 +12,8 @@ builder.Services.AddSerilog(config =>
     config.Enrich.FromLogContext();
 });
 
+builder.Services.AddHealthChecks();
+
 builder.Services.AddControllers();
 
 builder.Services.AddOpenApi();
@@ -39,6 +41,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapHealthChecks("/api/health");
 
 app.UseHttpsRedirection();
 
