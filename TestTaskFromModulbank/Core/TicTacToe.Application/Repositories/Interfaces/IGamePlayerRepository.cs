@@ -1,5 +1,4 @@
 ﻿using TicTacToe.Application.DTOs.GamePlayer;
-using TicTacToe.Application.DTOs.Move;
 using TicTacToe.Application.Repositories.Abstract;
 using TicTacToe.Domain.Entity;
 

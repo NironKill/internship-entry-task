@@ -1,11 +1,9 @@
-﻿using MediatR;
-using TicTacToe.Application.DTOs.Game;
+﻿using TicTacToe.Application.DTOs.Game;
 using TicTacToe.Application.DTOs.GamePlayer;
 using TicTacToe.Application.DTOs.Move;
 using TicTacToe.Application.DTOs.Player;
 using TicTacToe.Application.Repositories.Interfaces;
 using TicTacToe.Application.Services.Interfaces;
-using TicTacToe.Domain.Entity;
 using TicTacToe.Domain.Enums;
 
 namespace TicTacToe.Application.Services.Implementations
