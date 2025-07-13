@@ -25,16 +25,16 @@ jobs:
         name: Build and test
         uses: docker/build-push-action@v6
         with:
-          context: ./
-          file: ./Dockerfile
+          context: ./TestTaskFromModulbank
+          file: ./TestTaskFromModulbank/Dockerfile
           target: build
           load: true
       -
         name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./
-          file: ./Dockerfile
+          context: ./TestTaskFromModulbank
+          file: ./TestTaskFromModulbank/Dockerfile
           push: true
           target: final
           tags: ${{ vars.DOCKER_USERNAME }}/ttfmodulbank:latest    
