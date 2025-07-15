@@ -15,6 +15,7 @@ namespace TicTacToe.Test.Requests.Moves
         private readonly Mock<IMoveRepository> _moveMock;
         private readonly Mock<IPlayerRepository> _playerMock;
         private readonly Mock<IBoardService> _boardMock;
+        private readonly Mock<IGamblingJokeService> _gamblingMock;
         private readonly CreateMoveHandler _handler;
 
         public CreateMoveHandlerTest()
@@ -22,8 +23,9 @@ namespace TicTacToe.Test.Requests.Moves
             _moveMock = new Mock<IMoveRepository>();
             _playerMock = new Mock<IPlayerRepository>();
             _boardMock = new Mock<IBoardService>();
+            _gamblingMock = new Mock<IGamblingJokeService>();
 
-            _handler = new CreateMoveHandler(_moveMock.Object, _playerMock.Object, _boardMock.Object);
+            _handler = new CreateMoveHandler(_moveMock.Object, _playerMock.Object, _boardMock.Object, _gamblingMock.Object);
         }
 
         [Fact]
@@ -47,10 +49,10 @@ namespace TicTacToe.Test.Requests.Moves
                 It.IsAny<Func<Player, PlayerGetDTO>>(),
                 It.IsAny<CancellationToken>()))
                 .Returns((Expression<Func<Player, bool>> predicate,
-                          Expression<Func<Player, PlayerGetDTO>> selector,
+                          Func<Player, PlayerGetDTO> selector,
                           CancellationToken _) =>
                 {
-                    var dto = selector.Compile().Invoke(new Player
+                    var dto = selector.Invoke(new Player
                     {
                         Id = playerId,
                         Name = request.PlayerName

@@ -1,4 +1,5 @@
 using Serilog;
+using System.Text.Json.Serialization;
 using TicTacToe.Application;
 using TicTacToe.Persistence;
 using TicTacToe.Persistence.Common;
@@ -14,7 +15,11 @@ builder.Services.AddSerilog(config =>
 
 builder.Services.AddHealthChecks();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    options.JsonSerializerOptions.IgnoreReadOnlyProperties = true;
+});
 
 builder.Services.AddOpenApi();
 

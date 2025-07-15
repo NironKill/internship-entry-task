@@ -6,5 +6,6 @@ namespace TicTacToe.Application.Repositories.Interfaces
 {
     public interface IGamePlayerRepository : IBaseRepository<GamePlayer, GamePlayerCreateDTO, GamePlayerGetDTO>
     {
+        Task<Guid> GetOpponentId(Guid gameId, Guid playerId, CancellationToken cancellationToken);
     }
 }

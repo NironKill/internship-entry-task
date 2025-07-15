@@ -7,5 +7,6 @@ namespace TicTacToe.Application.Repositories.Interfaces
 {
     public interface IMoveRepository : IBaseRepository<Move, CreateMoveRequest, MoveGetDTO>
     {
+        Task<int> Count(Guid gameId, CancellationToken cancellationToken);
     }
 }

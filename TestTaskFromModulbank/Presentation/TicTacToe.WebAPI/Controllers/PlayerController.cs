@@ -21,7 +21,7 @@ namespace TicTacToe.WebAPI.Controllers
         /// POST /Player/Create
         /// {
         ///
-        ///     Name: "player name",
+        ///     Name: "player name (string)",
         /// }
         /// </remarks>
         /// <param name="dto">PlayerCreateDTO object</param>
@@ -48,6 +48,10 @@ namespace TicTacToe.WebAPI.Controllers
         /// <remarks>
         /// Sample request:
         /// PATCH /Player/Patch/id
+        /// {
+        ///
+        ///     Name: "player name (string)",
+        /// }
         /// </remarks>
         /// <param name="id">Player id (guid)</param>
         /// <returns>Returns PlayerGetDTO</returns>

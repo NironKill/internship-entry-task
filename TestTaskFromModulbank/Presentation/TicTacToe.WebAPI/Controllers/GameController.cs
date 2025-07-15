@@ -21,10 +21,10 @@ namespace TicTacToe.WebAPI.Controllers
         /// POST /Game/Create
         /// {
         ///
-        ///     FieldSize: "playing field size (NxN: N >= 3)",
-        ///     VictoryCondition: "the required number of vertical, horizontal and diagonal matches to win the game",
-        ///     PlayerX: "player name X",
-        ///     PlayerO: "player name O"
+        ///     FieldSize: "playing field size (NxN: N >= 3) (int)",
+        ///     VictoryCondition: "the required number of vertical, horizontal and diagonal matches to win the game (int)",
+        ///     PlayerX: "player name X (string)",
+        ///     PlayerO: "player name O (string)"
         /// }
         /// </remarks>
         /// <param name="dto">GameCreateDTO object</param>

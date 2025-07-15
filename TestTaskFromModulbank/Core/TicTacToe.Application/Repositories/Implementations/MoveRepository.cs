@@ -1,4 +1,5 @@
-﻿using TicTacToe.Application.DTOs.Move;
+﻿using Microsoft.EntityFrameworkCore;
+using TicTacToe.Application.DTOs.Move;
 using TicTacToe.Application.Interfaces;
 using TicTacToe.Application.Repositories.Abstract;
 using TicTacToe.Application.Repositories.Interfaces;
@@ -9,6 +10,13 @@ namespace TicTacToe.Application.Repositories.Implementations
 {
     public class MoveRepository : BaseRepository<Move, CreateMoveRequest, MoveGetDTO>, IMoveRepository
     {
-        public MoveRepository(IApplicationDbContext context) : base(context) { }
+        private readonly new IApplicationDbContext _context;
+        public MoveRepository(IApplicationDbContext context) : base(context) 
+        { 
+            _context = context;
+        }
+
+        public async Task<int> Count(Guid gameId, CancellationToken cancellationToken) =>
+            await _context.Moves.Where(x => x.GameId == gameId).CountAsync(cancellationToken);
     }
 }

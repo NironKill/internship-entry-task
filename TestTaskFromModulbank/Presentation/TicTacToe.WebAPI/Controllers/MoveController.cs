@@ -18,9 +18,9 @@ namespace TicTacToe.WebAPI.Controllers
         /// POST /Move/Create
         /// {
         ///
-        ///     Column: "vertical coordinate",
-        ///     Row: "horizontal coordinate",
-        ///     PlayerName: "player name",
+        ///     Column: "vertical coordinate (int)",
+        ///     Row: "horizontal coordinate (int)",
+        ///     PlayerName: "player name (string)",
         ///     GameId: "game id (Guid)"
         /// }
         /// </remarks>

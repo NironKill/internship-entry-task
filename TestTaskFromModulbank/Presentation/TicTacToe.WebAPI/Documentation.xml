@@ -13,10 +13,10 @@
              POST /Game/Create
              {
             
-                 FieldSize: "playing field size (NxN: N >= 3)",
-                 VictoryCondition: "the required number of vertical, horizontal and diagonal matches to win the game",
-                 PlayerX: "player name X",
-                 PlayerO: "player name O"
+                 FieldSize: "playing field size (NxN: N >= 3) (int)",
+                 VictoryCondition: "the required number of vertical, horizontal and diagonal matches to win the game (int)",
+                 PlayerX: "player name X (string)",
+                 PlayerO: "player name O (string)"
              }
              </remarks>
              <param name="dto">GameCreateDTO object</param>
@@ -72,9 +72,9 @@
              POST /Move/Create
              {
             
-                 Column: "vertical coordinate",
-                 Row: "horizontal coordinate",
-                 PlayerName: "player name",
+                 Column: "vertical coordinate (int)",
+                 Row: "horizontal coordinate (int)",
+                 PlayerName: "player name (string)",
                  GameId: "game id (Guid)"
              }
              </remarks>
@@ -92,7 +92,7 @@
              POST /Player/Create
              {
             
-                 Name: "player name",
+                 Name: "player name (string)",
              }
              </remarks>
              <param name="dto">PlayerCreateDTO object</param>
@@ -101,18 +101,22 @@
              <response code="400">The server could not understand the request due to incorrect syntax</response>
         </member>
         <member name="M:TicTacToe.WebAPI.Controllers.PlayerController.Patch(System.Guid,TicTacToe.Application.DTOs.Player.PlayerUpdateDTO)">
-            <summary>
-            Change player name
-            </summary>
-            <remarks>
-            Sample request:
-            PATCH /Player/Patch/id
-            </remarks>
-            <param name="id">Player id (guid)</param>
-            <returns>Returns PlayerGetDTO</returns>
-            <response code="200">Success</response>
-            <response code="400">The server could not understand the request due to incorrect syntax</response>
-            <response code="404">The server can not find the requested resource.</response>
+             <summary>
+             Change player name
+             </summary>
+             <remarks>
+             Sample request:
+             PATCH /Player/Patch/id
+             {
+            
+                 Name: "player name (string)",
+             }
+             </remarks>
+             <param name="id">Player id (guid)</param>
+             <returns>Returns PlayerGetDTO</returns>
+             <response code="200">Success</response>
+             <response code="400">The server could not understand the request due to incorrect syntax</response>
+             <response code="404">The server can not find the requested resource.</response>
         </member>
         <member name="M:TicTacToe.WebAPI.Controllers.PlayerController.Delete(System.Guid)">
             <summary>

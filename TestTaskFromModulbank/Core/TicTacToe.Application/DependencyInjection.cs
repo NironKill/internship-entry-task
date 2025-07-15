@@ -23,6 +23,7 @@ namespace TicTacToe.Application
             services.AddScoped<IGameRepository, GameRepository>();
             services.AddScoped<IPlayerRepository, PlayerRepository>();
             services.AddScoped<IMoveRepository, MoveRepository>();
+            services.AddScoped<IGamblingJokeService, GamblingJokeService>();
 
             services.AddScoped<IBoardService, BoardService>();
 
